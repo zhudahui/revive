@@ -5,7 +5,7 @@ import (
 	"go/ast"
 	"go/token"
 
-	"github.com/mgechev/revive/lint"
+	"github.com/zhudahui/revive/lint"
 )
 
 // SuperfluousElseRule lints given else constructs.
