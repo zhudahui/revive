@@ -111,6 +111,16 @@ func check(id *ast.Ident, thing string, w *lintNames) {
 		})
 		return
 	}
+	if id.Name[0] > 'a' && id.Name[0] < 'z' {
+		should:= Capitalize(should)
+		w.onFailure(lint.Failure{
+			Failure:    fmt.Sprintf("don't use lower in Go names[0]; %s %s should be %s", thing, id.Name, should),
+			Confidence: 0.9,
+			Node:       id,
+			Category:   "naming",
+		})
+		return
+	}
 	w.onFailure(lint.Failure{
 		Failure:    fmt.Sprintf("%s %s should be %s", thing, id.Name, should),
 		Confidence: 0.8,
@@ -227,4 +237,23 @@ func getList(arg interface{}, argName string) []string {
 		}
 	}
 	return list
+}
+// string lower to upper
+func Capitalize(str string) string {
+	var upperStr string
+	vv := []rune(str)   // 后文有介绍
+	for i := 0; i < len(vv); i++ {
+		if i == 0 {
+			if vv[i] >= 97 && vv[i] <= 122 {
+				vv[i] -= 32
+				upperStr += string(vv[i])
+			} else {
+				fmt.Println("Not begins with lowercase letter,")
+				return str
+			}
+		} else {
+			upperStr += string(vv[i])
+		}
+	}
+	return upperStr
 }
