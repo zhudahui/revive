@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"go/ast"
 
-	"github.com/mgechev/revive/lint"
+	"github.com/zhudahui/revive/lint"
 )
 
 // ReceiverNamingRule lints given else constructs.
