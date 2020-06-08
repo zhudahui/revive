@@ -5,7 +5,7 @@ import (
 
 	"strings"
 
-	"github.com/mgechev/revive/lint"
+	"github.com/zhudahui/revive/lint"
 )
 
 // MaxPublicStructsRule lints given else constructs.
